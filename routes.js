@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const connectToMongoDB = require('./mongo-test');
+const connectToMongoDBTest = require('./api/connection-test');
 
 // Define a route that uses the database connection
-router.get('/data', async (req, res) => {
+router.get('/test', async (req, res) => {
   try {
-    const db = await connectToMongoDB();
-    const collection = db.collection('products'); // Replace with your collection name
-    const data = await collection.find().toArray();
-    res.json(data);
+    const result = await connectToMongoDBTest();
+    res.send(result);
+    
   } catch (error) {
     console.error('Error fetching data from MongoDB', error);
     res.status(500).json({ error: 'Internal server error' });

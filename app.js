@@ -1,10 +1,6 @@
 const express = require('express');
 const app = express();
-const routes = require('./routes'); // Import your route file
-
-//app.get('/', (req, res) => {
-//    res.send('Hello, Express!');
-//});
+const routes = require('./routes');
 
 app.use('/api', routes);
 
